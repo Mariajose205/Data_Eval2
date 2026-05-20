@@ -1,1 +1,10 @@
+FROM mysql:8.0
 
+# Definimos la base de datos por defecto
+ENV MYSQL_DATABASE=proyecto_db
+
+# Copiamos tu script a la carpeta de inicialización automática de MySQL
+COPY 01_creacion_base_datos.sql /docker-entrypoint-initdb.d/
+
+# Exponemos el puerto estándar de MySQL
+EXPOSE 3306
